@@ -1,0 +1,112 @@
+[
+    {
+        "category": "Science",
+        "questionText": "What is the chemical symbol for gold?",
+        "options": [
+            "Ag",
+            "Au",
+            "Gd",
+            "Pt"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Geography",
+        "questionText": "Which is the largest ocean on Earth?",
+        "options": [
+            "Atlantic Ocean",
+            "Indian Ocean",
+            "Arctic Ocean",
+            "Pacific Ocean"
+        ],
+        "correctIndex": 3
+    },
+    {
+        "category": "Technology",
+        "questionText": "What does CPU stand for in computing?",
+        "options": [
+            "Central Processing Unit",
+            "Computer Personal Utility",
+            "Central Process Utility",
+            "Control Processing Unit"
+        ],
+        "correctIndex": 0
+    },
+    {
+        "category": "History",
+        "questionText": "In which year did the Titanic sink in the Atlantic Ocean?",
+        "options": [
+            "1910",
+            "1912",
+            "1915",
+            "1905"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Science",
+        "questionText": "What gas do plants absorb from the atmosphere for photosynthesis?",
+        "options": [
+            "Oxygen",
+            "Nitrogen",
+            "Carbon Dioxide",
+            "Hydrogen"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Pop Culture",
+        "questionText": "Who wrote the famous fantasy novel series 'Harry Potter'?",
+        "options": [
+            "J.R.R. Tolkien",
+            "J.K. Rowling",
+            "George R.R. Martin",
+            "C.S. Lewis"
+        ],
+        "correctIndex": 1
+    },
+    {
+        "category": "Geography",
+        "questionText": "What is the capital city of Australia?",
+        "options": [
+            "Sydney",
+            "Melbourne",
+            "Canberra",
+            "Brisbane"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Technology",
+        "questionText": "Which programming language is primarily executed inside web browsers?",
+        "options": [
+            "Python",
+            "C++",
+            "Java",
+            "JavaScript"
+        ],
+        "correctIndex": 3
+    },
+    {
+        "category": "History",
+        "questionText": "Who was the first President of the United States?",
+        "options": [
+            "Thomas Jefferson",
+            "Abraham Lincoln",
+            "George Washington",
+            "John Adams"
+        ],
+        "correctIndex": 2
+    },
+    {
+        "category": "Science",
+        "questionText": "What is the hardest natural substance on Earth?",
+        "options": [
+            "Gold",
+            "Iron",
+            "Diamond",
+            "Platinum"
+        ],
+        "correctIndex": 2
+    }
+]
