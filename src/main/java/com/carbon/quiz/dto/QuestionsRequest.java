@@ -11,7 +11,7 @@ import lombok.Data;
 public class QuestionsRequest {
     @JsonProperty("user_id")
     @Positive(message = "User ID must be a positive number")
-    private int userId;
+    private long userId;
 
     @JsonProperty("category")
     @NotBlank(message = "Category cannot be empty")

@@ -6,6 +6,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.persistence.PrePersist;
+import java.time.Instant;
 import lombok.Data;
 
 @Entity 
@@ -27,6 +29,21 @@ public class History {
 
     @Column(nullable = false)
     public int correctQuestions;
+
+    @Column(nullable = false)
+    public int wrongQuestions;
+
+    @Column(nullable = false)
+    public String attemptId;
+
+    @Column(nullable = false)
+    // Better than the other stuff
+    public Instant timestamp;
+
+    @PrePersist
+    void setTimestampIfMissing() {
+        if (timestamp == null) timestamp = Instant.now();
+    }
 
 
 }
