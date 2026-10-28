@@ -12,6 +12,7 @@ import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import io.github.bucket4j.ConsumptionProbe;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -19,9 +20,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class Filter extends OncePerRequestFilter {
     private final TokenVerifier tokenVerifier;
+    private final RateLimit rateLimitService;
 
-    public Filter(TokenVerifier tokenVerifier) {
+
+    public Filter(TokenVerifier tokenVerifier, RateLimit rateLimitService) {
         this.tokenVerifier = tokenVerifier;
+        this.rateLimitService = rateLimitService;
     }
 
     @Override
@@ -35,6 +39,21 @@ public class Filter extends OncePerRequestFilter {
             HttpServletRequest request,
             HttpServletResponse response,
             FilterChain filterChain) throws ServletException, IOException {
+
+        String ip = request.getRemoteAddr();
+        ConsumptionProbe probe = rateLimitService.tryConsume(ip);
+
+        if (!probe.isConsumed()) {
+            long retryAfterSeconds = Math.max(
+                    1,
+                    (long) Math.ceil(
+                            probe.getNanosToWaitForRefill() / 1000000000.0));
+
+            response.setHeader("Retry-After", Long.toString(retryAfterSeconds));
+            writeError(response, HttpStatus.TOO_MANY_REQUESTS,
+                    "Too many requests. Try again later.");
+            return;
+        }
 
         String authorization = request.getHeader(HttpHeaders.AUTHORIZATION);
 

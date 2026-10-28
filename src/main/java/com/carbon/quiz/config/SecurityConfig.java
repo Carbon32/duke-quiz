@@ -10,6 +10,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.carbon.quiz.security.Filter;
+import com.carbon.quiz.security.RateLimit;
 import com.carbon.quiz.security.TokenVerifier;
 
 import org.springframework.security.config.Customizer;
@@ -46,7 +47,8 @@ public class SecurityConfig {
 
     @Bean
     public SecurityFilterChain securityFilterChain(
-            HttpSecurity http, TokenVerifier tokenVerifier) throws Exception {
+            HttpSecurity http, TokenVerifier tokenVerifier,
+            RateLimit rateLimitService) throws Exception {
 
         http
             .cors(Customizer.withDefaults())
@@ -61,7 +63,7 @@ public class SecurityConfig {
                 .anyRequest().permitAll()
             )
             .addFilterBefore(
-                new Filter(tokenVerifier),
+                new Filter(tokenVerifier, rateLimitService),
                 UsernamePasswordAuthenticationFilter.class
             );
 
