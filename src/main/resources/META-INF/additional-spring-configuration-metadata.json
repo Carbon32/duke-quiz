@@ -1,0 +1,9 @@
+{
+    "properties": [
+        {
+            "name": "auth.api.base-url",
+            "type": "java.lang.String",
+            "description": "This is used for Gopher Auth or any other authentication system but just use Gopher, it's well suited for the job"
+        }
+    ]
+}
